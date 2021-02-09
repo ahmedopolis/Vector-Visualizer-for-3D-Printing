@@ -1,3 +1,4 @@
+
 /**
  * The 'IOException' package from 'io' are required to throw the 
  * required exceptions. As well as, the 'file.Path' packet from 'nio'
@@ -13,19 +14,18 @@ import java.util.Arrays;
 public class Solid {
 
 	/**
-	 * Instance variables to store the name of the solid ('name') and
-	 * to store the facet objects in a list.
+	 * Instance variables to store the name of the solid ('name') and to store the
+	 * facet objects in a list.
 	 */
 	private String name;
 	private ArrayList<Facet> facets;
 
-
 	/**
-	 * Default Constructor is set to have all this.parameters to
-	 * null values or zero. A second constructor is made with a single
-	 * parameter being 'name', where a string value can be stored in the
-	 * this.name and this.facets is initialized without being sized. Thus, it
-	 * is worth noting that these are overloaded constructors.
+	 * Default Constructor is set to have all this.parameters to null values or
+	 * zero. A second constructor is made with a single parameter being 'name',
+	 * where a string value can be stored in the this.name and this.facets is
+	 * initialized without being sized. Thus, it is worth noting that these are
+	 * overloaded constructors.
 	 */
 	public Solid() {
 		this.name = null;
@@ -36,7 +36,7 @@ public class Solid {
 		this.name = name;
 		this.facets = new ArrayList<Facet>();
 	}
-	
+
 	/**
 	 * 'addFacet' is used to load objects of the Facet.java class, into the
 	 * this.facets being a list. Using the if-statement, this boolean method will
@@ -52,29 +52,30 @@ public class Solid {
 	}
 
 	/**
-	 * 'toString' method that calls the 'toString' methods of 'Facet.jaca' and 'Point3D.java'.
-	 * The 'toString' method in the 'Arrays' package cannot be used directly via the dot approach
-	 * to an object of type ArrayList. However, when it is rendered a parameter in 'Arrays.toString(...)',
-	 * it can be used in the same manner. This was stored in a local variable 'stringList' for readability
+	 * 'toString' method that calls the 'toString' methods of 'Facet.jaca' and
+	 * 'Point3D.java'. The 'toString' method in the 'Arrays' package cannot be used
+	 * directly via the dot approach to an object of type ArrayList. However, when
+	 * it is rendered a parameter in 'Arrays.toString(...)', it can be used in the
+	 * same manner. This was stored in a local variable 'stringList' for readability
 	 * purposes.
 	 */
 	public String toString() {
 		String stringList = Arrays.toString(this.facets.toArray());
-		return "solid "+ name + stringList.replace("[", "").replace("]", "").replace(",", "") + "\nendsolid " + name;
+		return "solid " + name + stringList.replace("[", "").replace("]", "").replace(",", "") + "\nendsolid " + name;
 	}
-	
+
 	/**
-	 * The method 'Files.write()' has been used to store the resulting 
-	 * string method output 'toString()' into a file. This is done
-	 * utilizing the NIO API with write() which is not the most efficient
-	 * as opposed to the 'newBufferedWriter()'. However, with the small size of the 
-	 * file the simpler choice seemed valid. 
-	 * Resource: https://examples.javacodegeeks.com/core-java/nio/file-nio/java-nio-write-file-example/
+	 * The method 'Files.write()' has been used to store the resulting string method
+	 * output 'toString()' into a file. This is done utilizing the NIO API with
+	 * write() which is not the most efficient as opposed to the
+	 * 'newBufferedWriter()'. However, with the small size of the file the simpler
+	 * choice seemed valid. Resource:
+	 * https://examples.javacodegeeks.com/core-java/nio/file-nio/java-nio-write-file-example/
 	 */
-	public void toTextFile(Path path) throws IOException{
+	public void toTextFile(Path path) throws IOException {
 		Files.write(path, toString().getBytes());
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -87,7 +88,7 @@ public class Solid {
 				listOfVertex.add(objectVertex);
 			}
 			for (int i = 0; i < listOfVertex.size() - 2; i++) {
-				Facet objectFacet = new Facet(listOfVertex.get(0),listOfVertex.get(i+1),listOfVertex.get(i+2));
+				Facet objectFacet = new Facet(listOfVertex.get(0), listOfVertex.get(i + 1), listOfVertex.get(i + 2));
 				this.facets.add(objectFacet);
 			}
 			return true;

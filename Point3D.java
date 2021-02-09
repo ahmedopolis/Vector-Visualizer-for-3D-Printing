@@ -1,26 +1,27 @@
 
 public class Point3D {
-	
+
 	// Instance Variables consisting of the axis for the vertex.
 	private double x;
 	private double y;
 	private double z;
-	
-	// Sole Constructor to store the coordinates into an object representing the vertex.
+
+	// Sole Constructor to store the coordinates into an object representing the
+	// vertex.
 	public Point3D(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
-	
+
 	/**
-	 * 'calcNormal' is a static method to calculate the normal unit vertex. Its parameters
-	 * consist of three objects of type 'Point3D', which the coordinates of these
-	 * three vertex are use to compute the desired normal coordinates. This method
-	 * returns a vertex being an object of type Point3D. The resources used for this
-	 * computation are the following: 
-	 * -> Resource 1: https://en.wikipedia.org/wiki/Normal_(geometry) 
-	 * -> Resource 2: https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:vectors/x9e81a4f98389efdf:unit-vec/v/unit-vector-intro
+	 * 'calcNormal' is a static method to calculate the normal unit vertex. Its
+	 * parameters consist of three objects of type 'Point3D', which the coordinates
+	 * of these three vertex are use to compute the desired normal coordinates. This
+	 * method returns a vertex being an object of type Point3D. The resources used
+	 * for this computation are the following: -> Resource 1:
+	 * https://en.wikipedia.org/wiki/Normal_(geometry) -> Resource 2:
+	 * https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:vectors/x9e81a4f98389efdf:unit-vec/v/unit-vector-intro
 	 */
 
 	public static Point3D calcNormal(Point3D v1, Point3D v2, Point3D v3) {
@@ -42,11 +43,11 @@ public class Point3D {
 
 		/**
 		 * The sum of the Normal axis-values must be zero. The following local
-		 * variables: xN, yN, zN are for non-normalized values (Resource 1). The sum of the
-		 * non-normalized coordinates to the power of 2 is stored in the local variable
-		 * 'sum', which the square of 'sum' is stored in 'alpha' being the magnitude of the
-		 * normal vector. Using this "alpha" coefficient, the normalized coordinates are computed
-		 * and stored in Ax, Ay and Az.
+		 * variables: xN, yN, zN are for non-normalized values (Resource 1). The sum of
+		 * the non-normalized coordinates to the power of 2 is stored in the local
+		 * variable 'sum', which the square of 'sum' is stored in 'alpha' being the
+		 * magnitude of the normal vector. Using this "alpha" coefficient, the
+		 * normalized coordinates are computed and stored in Ax, Ay and Az.
 		 */
 		double xN = (y2 - y1) * (z3 - z1) - (y3 - y1) * (z2 - z1);
 		double yN = (z2 - z1) * (x3 - x1) - (z3 - z1) * (x2 - x1);
@@ -66,10 +67,11 @@ public class Point3D {
 	}
 
 	/**
-	 * 'toString' Method to print the coordinates of a vertex used by the 'PointArray' class.
+	 * 'toString' Method to print the coordinates of a vertex used by the
+	 * 'PointArray' class.
 	 */
 	public String toString() {
 		return " " + x + " " + y + " " + z;
 	}
-	
+
 }
